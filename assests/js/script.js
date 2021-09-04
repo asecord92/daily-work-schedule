@@ -1,5 +1,6 @@
 timeBlockArr = ["9 AM","10 AM", "11 AM","12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
 
+var taskArr = [];
 
 var currentHour= moment().format('H YYYY-MM-DD');
 
@@ -27,7 +28,7 @@ for(var i=0; i<timeBlockArr.length; i++){
     timeBlockHr.innerHTML = constTime;
     //create text area
     var timeBlockText = document.createElement("textarea");
-    timeBlockText.setAttribute("class", "col-8 description textarea present");
+    timeBlockText.setAttribute("class", "col-8 description textarea");
     timeBlockText.setAttribute("id", "task" + i)
     //create button
     var timeBlockBtn = document.createElement("button");
@@ -66,17 +67,37 @@ function auditTask () {
     if (setHour < currentHour) {
         timeBlockText.classList = "col-8 description textarea past"
     }
-    else {
+    else if (setHour > currentHour) {
         timeBlockText.classList = "col-8 description textarea future"
-    }//else if (setHour > currentHour) {
-    //     timeBlockText.classList = "col-8 description textarea future"
-    // } else { 
-    //     timeBlockText.classList ="col-8 description textarea present"
+    } else { 
+        timeBlockText.classList ="col-8 description textarea present"
  
-    // };
+    };
+}
+// save to local storage
+function saveTask() {
+
+}
+//load from local storage to page
+function loadTask() {
+
 }
 
 displayDate();
+
+var textAreaEl = document.querySelectorAll(".textarea")
+// how to tie each button to a specific row. how to tie each response to a specific row and reflect all of that in localstorage
+var saveBtnEl = document.querySelectorAll(".saveBtn");
+saveBtnEl.forEach(saveBtnEl => {
+    saveBtnEl.addEventListener("click", function(e){
+        console.log(saveBtnEl.id);
+        for (var i=0; i<textAreaEl.length; i++){
+            currentArea  = textAreaEl[i]
+            var taskIn = currentArea.value;
+            console.log(taskIn)
+        };
+    })
+})
 
 console.log(currentHour);
 
