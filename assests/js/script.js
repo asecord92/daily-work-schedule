@@ -82,13 +82,13 @@ function auditTask (setHour) {
 }
 // save to local storage
 function saveTask(e) {
-    var key = e.target.getAttribute("id");
+    var time = e.target.getAttribute("id");
     console.log(e.target);
     console.log(e.target.previousSibling.value);
-    var value = e.target.previousSibling.value;
+    var taskVal = e.target.previousSibling.value;
 
 
-    localStorage.setItem(key, value);
+    localStorage.setItem(time, taskVal);
 
 }
 //load from local storage to page
