@@ -15,6 +15,6 @@ This application also allows users to save their tasks locally, to access whenve
 
 Below is a screenshot of the deployed app:
 
-![ScreenShot](.assets/images/screenshot.png)
+![ScreenShot](./assets/images/screenshot.png)
 
 Link to deployed application: https://asecord92.github.io/daily-work-schedule/
