@@ -70,10 +70,10 @@ function auditTask (setHour) {
     //TO DO: figure out why 9Am is being set to "future" even if past
     console.log(setHour, currentHour);
 
-    if (+setHour < +currentHour) {
+    if (+setHour > +currentHour) {
         timeBlockText.classList = "col-8 description textarea past"
     }
-    else if (+setHour > +currentHour) {
+    else if (+setHour < +currentHour) {
         timeBlockText.classList = "col-8 description textarea future"
     } else { 
         timeBlockText.classList ="col-8 description textarea present"
@@ -83,24 +83,13 @@ function auditTask (setHour) {
 // save to local storage
 function saveTask(e) {
     var key = e.target.getAttribute("id");
-    console.log(e.target);
-    console.log(e.target.previousSibling.value);
     var value = e.target.previousSibling.value;
-
 
     localStorage.setItem(key, value);
 
 }
 //load from local storage to page
 function loadTask() {
-    var allText = document.querySelectorAll(".textarea")
-    allText.forEach((val, i)=>{
-       val.value = localStorage.getItem(i)
-    })
-    // for(var i=0; i < 9; i++) {
-
-    //     $("#task" + i).val(localStorage.getItem(i))
-    // }
 
 }
 
@@ -110,13 +99,12 @@ var textAreaEl = document.querySelectorAll(".textarea")
 // how to tie each button to a specific row. how to tie each response to a specific row and reflect all of that in localstorage
 var saveBtnEl = document.querySelectorAll(".saveBtn");
 saveBtnEl.forEach(saveBtnEl => {
-    saveBtnEl.addEventListener("click", (e)=>{
+    saveBtnEl.addEventListener("click", function(e){
         saveTask(e);
 
-    });
-});
+    })
+})
 
-loadTask();
 console.log(currentHour);
 
 

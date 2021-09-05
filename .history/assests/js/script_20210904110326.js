@@ -110,7 +110,7 @@ var textAreaEl = document.querySelectorAll(".textarea")
 // how to tie each button to a specific row. how to tie each response to a specific row and reflect all of that in localstorage
 var saveBtnEl = document.querySelectorAll(".saveBtn");
 saveBtnEl.forEach(saveBtnEl => {
-    saveBtnEl.addEventListener("click", (e)=>{
+    saveBtnEl.addEventListener("click", function(e){
         saveTask(e);
 
     });
